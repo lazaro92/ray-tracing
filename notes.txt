@@ -1,0 +1,18 @@
+1.1. Create a vec3 class representing a vector of size 3. This will represent vectors, colors and points in a 3D environment. The numbers are double. Then create vector utility functions to perform vector operations.
+1.2. Create a color utility function to get the color format for PPM images.
+
+2.1. Create a ray class that represents the ray with its origin as a point and the direction as a vector. With the t we can get any point inside the ray.
+2.2. For every pixel, we create a Ray through the pixel and computes the color seen in the direction of those rays.
+
+2.2.1. Calculate the ray from the eye to the pixel.
+2.2.2. Determine if the ray intersect an object.
+2.2.3. Compute a color for the interesct point.
+
+We use a function ray_color that returns the color of the background, inthis case a blue to white gradient.
+
+2.3. We create a virtual viewport with the same aspect ratio as the image where we will pass our scene rays and we will put the observer (camera) at 0.0.0 coordinates.
+
+3. After we add a Sphere because it's easy to calculate if a ray hit the sphere or not. Calculu4. When we had an sphere (if the ray hit we can set a red color for the pixel). We will calculate shaders using surface normals.
+4.4 If the ray hits the sphere, we calculate the normal vector, which has a value between 0 and 1. If there are two hits in one ray, we get the closest hit point (smallest t).
+4.5 After we create a class that represents a hitable object. It creates a virtual method to calculate if the object is hitted by a ray that the inerited classes will have to implement.
+4.6 After we implement a Sphere class.
