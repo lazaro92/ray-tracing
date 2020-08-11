@@ -6,12 +6,19 @@
 
 #include <iostream>
 
+/**
+ * calculate the color for the pixel.
+ * @param ray - the ray.
+ * @param world - objects deffininf the world.
+ */
 color ray_color(const ray& r, const hittable& world) {
 	hit_record rec;
+	// return the computed color of the hitted object
 	if (world.hit(r, 0, infinity, rec)) {
 		return 0.5 * (rec.normal + color(1,1,1));
 	}
 	
+	// return the computed blue to white gradient
 	vec3 unit_direction = unit_vector(r.direction());
 	auto t = 0.5*(unit_direction.y() + 1.0);
 	return (1.0-t)*color(1.0, 1.0, 1.0) + t*color(0.5, 0.7, 1.0);

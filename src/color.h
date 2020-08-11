@@ -5,8 +5,12 @@
 
 #include <iostream>
 
+/**
+ * Write the translated [0,255] value of each color component.
+ * @param out - the ostream to write in.
+ * @param pixel_color - the color of the pixel.
+ */
 void write_color(std::ostream &out,color pixel_color) {
-    // Write the translated [0,255] value of each color component.
     out << static_cast<int>(255.999 * pixel_color.x()) << ' '
         << static_cast<int>(255.999 * pixel_color.y()) << ' '
         << static_cast<int>(255.999 * pixel_color.z()) << '\n';

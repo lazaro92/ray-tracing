@@ -6,6 +6,9 @@
 
 using std::sqrt;
 
+/**
+ * Class that represent a 3 element sized vector.
+ */
 class vec3 {
     public:
         vec3() : e{0,0,0} {}

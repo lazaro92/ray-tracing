@@ -9,6 +9,9 @@
 using std::shared_ptr;
 using std::make_shared;
 
+/**
+ * Class representing a list of hittable objects.
+ */
 class hittable_list : public hittable {
     public:
         hittable_list() {}
@@ -24,6 +27,14 @@ class hittable_list : public hittable {
         std::vector<shared_ptr<hittable>> objects;
 };
 
+/**
+ * Sees if a ray hit any element and in case of hit, computes the nearest data.
+ * @param r - the ray.
+ * @param t_min - the minimal t value.
+ * @param t_max - the maximal t value.
+ * @param rec - output of the hit data in case there is a hit.
+ * @return bool true if the ray hit an object, false otherwise.
+ */
 bool hittable_list::hit(const ray& r, double t_min, double t_max, hit_record& rec) const {
     hit_record temp_rec;
     bool hit_anything = false;

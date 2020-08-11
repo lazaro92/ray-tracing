@@ -3,6 +3,9 @@
 
 #include "ray.h"
 
+/**
+ * Struct with the data of a hit.
+ */
 struct hit_record {
     point3 p;
     vec3 normal;
@@ -15,6 +18,9 @@ struct hit_record {
 	}
 };
 
+/**
+ * Class representing a hittable object used for inheritance
+ */
 class hittable {
     public:
         virtual bool hit(const ray& r, double t_min, double t_max, hit_record& rec) const = 0;

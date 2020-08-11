@@ -4,6 +4,9 @@
 #include "hittable.h"
 #include "vec3.h"
 
+/**
+ * Class that represents a hittable sphere. Inherites form hittable class.
+ */
 class sphere : public hittable {
     public:
         sphere() {}
@@ -18,14 +21,14 @@ class sphere : public hittable {
 };
 
 /**
-* Calculates the square inside the quadratic equation in order to know if
-* ray hit the sphere
-* @param r - the ray to check if hits the sphere
-* @param t_min - the min t value 
-* @param t_max - the max t value
-* @param hit_record - structure with the information of the hit 
-* @return bool - true if there is a hit, false otherwise.
-**/
+ * Calculates the square inside the quadratic equation in order to know if
+ * ray hit the sphere
+ * @param r - the ray to check if hits the sphere
+ * @param t_min - the min t value 
+ * @param t_max - the max t value
+ * @param hit_record - structure with the information of the hit 
+ * @return bool - true if there is a hit, false otherwise.
+ */
 bool sphere::hit(const ray& r, double t_min, double t_max, hit_record& rec) const {
     vec3 oc = r.origin() - center;
     auto a = r.direction().length_squared();

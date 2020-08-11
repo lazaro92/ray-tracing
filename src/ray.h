@@ -3,6 +3,10 @@
 
 #include "vec3.h"
 
+/**
+ * Class that represents a Ray, with an origin point and a vector
+ * representing the direction.
+ */
 class ray {
     public:
         ray() {}
