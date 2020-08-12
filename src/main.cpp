@@ -1,9 +1,9 @@
 #include "rtweekend.h"
 
+#include "camera.h"
 #include "color.h"
 #include "hittable_list.h"
 #include "sphere.h"
-#include "camera.h"
 
 #include <iostream>
 
@@ -11,12 +11,20 @@
  * calculate the color for the pixel.
  * @param ray - the ray.
  * @param world - objects deffininf the world.
+ * @param depth - the profundity of the recursion.
+ * @return the color of the pixel.
  */
-color ray_color(const ray& r, const hittable& world) {
+color ray_color(const ray& r, const hittable& world, int depth) {
 	hit_record rec;
-	// return the computed color of the hitted object
-	if (world.hit(r, 0, infinity, rec)) {
-		return 0.5 * (rec.normal + color(1,1,1));
+
+    // If we've exceeded the ray bounce limit, no more light is gathered.
+    if (depth <= 0)
+        return color(0,0,0); 
+
+	// return the computed color of the nearest hitted object
+	if (world.hit(r, 0.001, infinity, rec)) {
+		point3 target = rec.p + random_in_hemisphere(rec.normal);
+        return 0.5 * ray_color(ray(rec.p, target - rec.p), world, depth-1);
 	}
 	
 	// return the computed blue to white gradient
@@ -32,6 +40,7 @@ int main() {
 	const int image_width = 400;
 	const int image_height = static_cast<int>(image_width / aspect_ratio);
 	const int samples_per_pixel = 100;
+	const int max_depth = 50;
 
 	// World
 	hittable_list world;
@@ -52,7 +61,7 @@ int main() {
                 auto u = (i + random_double()) / (image_width-1);
                 auto v = (j + random_double()) / (image_height-1);
                 ray r = cam.get_ray(u, v);
-                pixel_color += ray_color(r, world);
+                pixel_color += ray_color(r, world, max_depth);
             }
             write_color(std::cout, pixel_color, samples_per_pixel);
 		}
