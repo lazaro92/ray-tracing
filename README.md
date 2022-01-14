@@ -14,3 +14,7 @@ For the project I'm visiting the next pages:
 In order to compile the project, execute the next instruction: `g++ -Wall src/main.cpp -o output`. Note that if you use another compiler you will have to know how to compile and link a program under it.
 
 Then execute the generated program by execute `./output > image.ppm`. Note that the output from the execution is saved in a *PPM* text file that indicate the color for every pixel. For more information about the format check the [Wikipedia example](https://en.wikipedia.org/wiki/Netpbm#PPM_example).
+
+## Results of the execution
+
+You can open the scene by uploading the file in an online PPM viewer like [PPM Viewer](https://www.cs.rhodes.edu/welshc/COMP141_F16/ppmReader.html).
